@@ -6,13 +6,16 @@ import Product from './models/Product.js';
 dotnev.config(); //reads .env file and adds the keys into process.env so we can retrieve its values)
 
 const app = express();
+app.use(express.json());
 
-app.get("/products", (req, res) => {
+app.get("/api/products", (_, res) => {
     res.send("Server is ready! 123");
 });
 
-app.post("/products", async (req, res) => {
-    const product = req.body;
+app.post("/api/products", async (req, res) => {
+    const product = await req.body;
+
+    if (!product) return res.status(400).json({ success: false, message: 'empty body' });
 
     if (!product.name || !product.price || !product.image) {
         return res.status(400).json({ success: false, message: 'Please provide all fields' });
