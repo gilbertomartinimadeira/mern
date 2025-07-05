@@ -9,3 +9,9 @@ npm install express mongoose dotenv
 npm i nodemo --save-dev
 
 --nodemon - node execution monitor - enables hot reload
+
+npm install mongodb
+
+-- a .env file should be placed in app root with the following key=pair
+
+MONGO_URI=<connection_string>
