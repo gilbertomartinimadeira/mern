@@ -11,7 +11,7 @@ app.use(express.json());
 
 app.use("/api/products", productRoutes);
 
-const port = 5000;
+const port = process.env.PORT || 5001;
 
 app.listen(port, () => {
     connectDB();
